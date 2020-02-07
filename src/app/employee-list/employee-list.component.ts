@@ -1,5 +1,5 @@
+import { EmployeeService } from './../employee.service';
 import { Component, OnInit } from '@angular/core';
-import employees from '../employees';
 
 @Component({
   selector: 'employee-list',
@@ -8,11 +8,15 @@ import employees from '../employees';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees = employees;
+  //employees = employees;
   
-  constructor() { }
+  constructor(public employeeService: EmployeeService) { }
 
   ngOnInit() {
+  }
+
+  getSalaryColor(employee){
+    return employee.salary > 20000 ? 'green' : null;
   }
 
 }

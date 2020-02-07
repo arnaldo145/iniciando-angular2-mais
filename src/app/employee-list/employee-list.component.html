@@ -8,9 +8,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let employee of employees">
+        <tr *ngFor="let employee of employeeService.employees; let i = index;" [id]="'tr' + i">
             <td>{{ employee.name }}</td>
-            <td>{{ employee.salary }}</td>
+            <!--<td [style.color]="getSalaryColor(employee)">{{ employee.salary }}</td>-->
+            <td [innerHtml]="employee.salary" [ngClass]="{'salary-expensive': employee.salary > 20000, 'salary-cheap': employee.salary < 1000}"></td>
         </tr>
     </tbody>
 </table>

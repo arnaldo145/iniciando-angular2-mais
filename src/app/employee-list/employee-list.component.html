@@ -1,4 +1,8 @@
 <div class="container">
+
+    <alert-success [hidden]="!showMessageSuccess">O empregado <strong>{{ employee?.name }}</strong> foi cadastrado com sucesso!
+    </alert-success>
+
     <div class="row">
         <h1>Nossos empregados</h1>
 
@@ -28,4 +32,4 @@
     </div>
 </div>
 
-<employee-new-modal></employee-new-modal>
+<employee-new-modal (onSubmit)="onNewEmployee($event)"></employee-new-modal>

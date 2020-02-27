@@ -1,5 +1,5 @@
 import { EmployeeNewModalComponent } from './../employee-new-modal/employee-new-modal.component';
-import { EmployeeService } from './../employee.service';
+import { EmployeeService, Employee } from './../employee.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -8,6 +8,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./employee-list.component.css']
 })
 export class EmployeeListComponent implements OnInit {
+
+  employee: Employee;
+  showMessageSuccess: boolean = false;
 
   @ViewChild(EmployeeNewModalComponent, {static: false})
   employeeNewModal: EmployeeNewModalComponent;
@@ -25,4 +28,8 @@ export class EmployeeListComponent implements OnInit {
     this.employeeNewModal.show();
   }
 
+  onNewEmployee(employee: Employee){
+    this.employee = employee;
+    this.showMessageSuccess = true;
+  }
 }

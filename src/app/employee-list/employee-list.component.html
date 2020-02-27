@@ -1,17 +1,31 @@
-<h1>Nossos empregados</h1>
+<div class="container">
+    <div class="row">
+        <h1>Nossos empregados</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Salário</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employeeService.employees; let i = index;" [id]="'tr' + i">
-            <td>{{ employee.name }}</td>
-            <!--<td [style.color]="getSalaryColor(employee)">{{ employee.salary }}</td>-->
-            <td [innerHtml]="employee.salary" [ngClass]="{'salary-expensive': employee.salary > 20000, 'salary-cheap': employee.salary < 1000}"></td>
-        </tr>
-    </tbody>
-</table>
+        <p salaryColor></p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td colspan="3">
+                        <button class="btn btn-primary" (click)="openNewModal()">Novo empregado</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nome</th>
+                    <th>Salário</th>
+                    <th>Bônus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employeeService.employees; let i = index;" [id]="'tr' + i">
+                    <td>{{ employee.name }}</td>
+                    <td [innerHtml]="employee.salary" salaryColor="{{ employee.salary }}"></td>
+                    <td>{{ employee.bonus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<employee-new-modal></employee-new-modal>

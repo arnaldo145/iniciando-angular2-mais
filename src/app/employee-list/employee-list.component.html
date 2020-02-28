@@ -24,8 +24,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let employee of employeeService.employees; let i = index;" [id]="'tr' + i">
-                    <td>{{ employee.name }}</td>
-                    <td [innerHtml]="employee.salary" [salaryColor]="employee.salary"></td>
+                    <td [innerHtml]="employee.name | uppercase"></td>
+                    <td [innerHtml]="employee.salary | myCurrency" [salaryColor]="employee.salary"></td>
                     <td>{{ employee.bonus }}</td>
                     <td>
                         <a href="javascript:void(0)" (click)="openEditModal(employee)">Editar</a>

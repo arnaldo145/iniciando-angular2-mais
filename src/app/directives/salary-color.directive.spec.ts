@@ -1,4 +1,6 @@
-import { SalaryColorDirective } from './salary-color.directive';
+import { SalaryColorDirective } from "./salary-color.directive";
+
+
 
 describe('SalaryColorDirective', () => {
   it('should create an instance', () => {

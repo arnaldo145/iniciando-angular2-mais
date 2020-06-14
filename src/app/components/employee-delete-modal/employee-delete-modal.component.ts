@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { EmployeeService, Employee } from '../../services/employee.service';
+import { ModalComponent } from '../modal/modal.component';
 
 declare const $;
 
@@ -16,7 +17,10 @@ export class EmployeeDeleteModalComponent implements OnInit {
   @Output()
   onDestroy: EventEmitter<Employee> = new EventEmitter<Employee>();
 
-  constructor(private element: ElementRef, private employeeService: EmployeeService) { }
+  @ViewChild(ModalComponent, {static: false})
+  modalComponent: ModalComponent;
+
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
   }
@@ -29,18 +33,10 @@ export class EmployeeDeleteModalComponent implements OnInit {
   }
 
   hide() {
-    const divModal = this.getDivModal();
-    $(divModal).modal('hide');
+   this.modalComponent.hide();
   }
 
   show() {
-    const divModal = this.getDivModal();
-    $(divModal).modal('show');
+    this.modalComponent.show();
   }
-
-  private getDivModal(): HTMLElement {
-    const nativeElement: HTMLElement = this.element.nativeElement;
-    return nativeElement.firstChild as HTMLElement;
-  }
-
 }

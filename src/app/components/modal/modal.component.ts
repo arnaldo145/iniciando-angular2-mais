@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 
 declare const $;
 
@@ -23,7 +23,7 @@ declare const $;
   styles: []
 })
 export class ModalComponent implements OnInit {
-
+  
   constructor(private element: ElementRef) { }
 
   ngOnInit() {
